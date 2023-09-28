@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar bg-body-tertiary bg-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="product_list.html">
+                <img src="assets/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                InforDev
+            </a>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <div class="container mt-4">
+            <h1 class="mb-1">Product Add</h1>
+            <button type="button" class="btn btn-primary" onclick="saveProduct()">Save</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelAddProduct()">Cancel</button>
+        </div>
+
+        
+
+        <hr>
+
+        <!-- Add Bootstrap CSS Link -->
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+                    <!-- Container to center the form -->
+                    <div class="container mt-5">
+
+                        <!-- Form for Product CRUD -->
+                        <form id="product_form" class="col-md-6 mx-auto">
+
+                            <!-- SKU Field -->
+                            <div class="form-group">
+                                <label for="sku">SKU:</label>
+                                <input type="text" class="form-control" id="sku" name="sku">
+                            </div>
+
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                            </div>
+
+                            <!-- Price Field -->
+                            <div class="form-group">
+                                <label for="price">Price:</label>
+                                <input type="text" class="form-control" id="price" name="price">
+                            </div>
+
+                            <!-- Product Type Switcher -->
+                            <div class="form-group">
+                                <label for="productType">Product Type:</label>
+                                <select class="form-control" id="productType" name="productType">
+                                    <option value="dvd">DVD</option>
+                                    <option value="book">Book</option>
+                                    <option value="furniture">Furniture</option>
+                                </select>
+                            </div>
+
+                            <!-- Product Type-Specific Attribute Fields -->
+                            <div id="dvdFields" style="display:none;">
+                                <div class="form-group">
+                                    <label for="size">Size (MB):</label>
+                                    <input type="text" class="form-control" id="size" name="size">
+                                </div>
+                            </div>
+
+                            <div id="bookFields" style="display:none;">
+                                <div class="form-group">
+                                    <label for="weight">Weight (Kg):</label>
+                                    <input type="text" class="form-control" id="weight" name="weight">
+                                </div>
+                            </div>
+
+                            <div id="furnitureFields" style="display:none;">
+                                <div class="form-group">
+                                    <label for="height">Height (cm):</label>
+                                    <input type="text" class="form-control" id="height" name="height">
+                                </div>
+                                <div class="form-group">
+                                    <label for="width">Width (cm):</label>
+                                    <input type="text" class="form-control" id="width" name="width">
+                                </div>
+                                <div class="form-group">
+                                    <label for="length">Length (cm):</label>
+                                    <input type="text" class="form-control" id="length" name="length">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <script>
+                        // Function to show/hide fields based on selected product type
+                        function toggleProductFields() {
+                            const productType = document.getElementById("productType").value;
+
+                            const dvdFields = document.getElementById("dvdFields");
+                            const bookFields = document.getElementById("bookFields");
+                            const furnitureFields = document.getElementById("furnitureFields");
+
+                            dvdFields.style.display = (productType === "dvd") ? "block" : "none";
+                            bookFields.style.display = (productType === "book") ? "block" : "none";
+                            furnitureFields.style.display = (productType === "furniture") ? "block" : "none";
+                        }
+
+                        function saveProduct() {
+                            var sku = document.getElementById('sku').value;
+                            var name = document.getElementById('name').value;
+                            var price = document.getElementById('price').value;
+                            var productType = document.getElementById('productType').value;
+                            var attribute;
+
+                            switch (productType) {
+                                case "dvd":
+                                    attribute = document.getElementById('size').value + ' MB';
+                                    break;
+                                case "book":
+                                    attribute = document.getElementById('weight').value + ' Kg';
+                                    break;
+                                case "furniture":
+                                    attribute = document.getElementById('height').value + 'x' + document.getElementById('width').value + 'x' + document.getElementById('length').value + ' cm';
+                                    break;
+                            }
+
+                            // Assuming we are using localStorage to save the product temporarily
+                            var product = {
+                                sku: sku,
+                                name: name,
+                                price: price,
+                                productType: productType,
+                                attribute: attribute
+                            };
+
+                            // Save the product data to localStorage
+                            localStorage.setItem('newProduct', JSON.stringify(product));
+
+                            // Redirect to Product List page
+                            window.location.href = 'product_list.html';
+                        }
+
+                        function cancelAddProduct() {
+                            window.location.href = 'product_list.html';
+                    }
+
+                        // Attach event listener to product type switcher
+                        document.getElementById("productType").addEventListener("change", toggleProductFields);
+
+                    </script>
+
+        <!-- Footer -->
+            <footer class="container text-center bg-light">
+            <p style="font-size:12px">Scandiweb Test assignment</p>
+            </footer>
+        <!-- Footer -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+
+</html>

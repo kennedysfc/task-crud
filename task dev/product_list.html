@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+        <body>
+            <!-- Navbar -->
+            <nav class="navbar bg-body-tertiary bg-light">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="product_list.html">
+                    <img src="assets/img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    InforDev
+                </a>
+                </div>
+            </nav>
+            <!-- Navbar -->
+            
+            <div class="container mt-4">
+                <h1 class="mb-3">Product List</h1>
+
+                <div class="mb-3">
+                    <a href="add_product.html" class="btn btn-primary">ADD</a>
+                    <button class="btn btn-danger" onclick="massDelete()">MASS DELETE</button>
+                </div>
+
+                <!-- Form with Table -->
+                <form onsubmit="return validateForm()">
+
+                <!-- Table -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>SKU</th>
+                                <th>Name</th>
+                                <th>Price ($)</th>
+                                <th>Attribute</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- DISC -->
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0071</td>
+                                <td>Titanic</td>
+                                <td>$5.00</td>
+                                <td>Size: 8GB</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0072</td>
+                                <td>Spider Man</td>
+                                <td>$10.00</td>
+                                <td>Size: 16GB</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0073</td>
+                                <td>Before Of You</td>
+                                <td>$17.99</td>
+                                <td>Size: 32GB</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0074</td>
+                                <td>Fast and Furious</td>
+                                <td>$25.00</td>
+                                <td>Size: 64GB</td>
+                            </tr>
+                            <!-- DISC -->
+
+                            <!-- BOOK -->
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0031</td>
+                                <td>Mind Set</td>
+                                <td>$15.00</td>
+                                <td>Weight (Kg):</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0032</td>
+                                <td>Rich Dad Poor Dad</td>
+                                <td>$16.00</td>
+                                <td>Weight (Kg):</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0033</td>
+                                <td>The Power of Now</td>
+                                <td>$18.99</td>
+                                <td>Weight (Kg):</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0034</td>
+                                <td>Atomic Habits</td>
+                                <td>$12.00</td>
+                                <td>Weight (Kg):</td>
+                            </tr>
+                            <!-- BOOK --> 
+
+                            <!-- FORNITURE -->
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0053</td>
+                                <td>Chair</td>
+                                <td>$300.00</td>
+                                <td>Dimension:  94x53x68</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0054</td>
+                                <td>Chair High Black 365</td>
+                                <td>$600.00</td>
+                                <td>Dimension: 104x56x68</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0055</td>
+                                <td>Chair High Executive</td>
+                                <td>$800.99</td>
+                                <td>Dimension: 104x56x68</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="delete-checkbox"></td>
+                                <td>SKU0056</td>
+                                <td>Chair Husky Office Lux</td>
+                                <td>$1,125.00</td>
+                                <td>Dimension: 104x56x68</td>
+                            </tr>
+                            <!-- FORNITURE --> 
+
+                           </tbody>
+                        </table>
+                        <input type="submit" class="btn btn-success" value="Submit">
+                    </form>
+                <!-- Table -->
+                <div id="notification" class="alert alert-danger" style="display:none;"></div>
+            </div>
+
+            <script>
+                function massDelete() {
+                    var checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.parentNode.parentNode.remove();
+                    });
+                }
+
+                function showAttributeDescription() {
+                    var productType = document.getElementById('product-type').value;
+                    var attributeCell = document.querySelectorAll('td[data-type]');
+                    attributeCell.forEach(function(cell) {
+                        if (cell.dataset.type === productType) {
+                            var attributeName = cell.innerText.split(':')[0];
+                            alert('Please provide ' + attributeName);
+                        }
+                    });
+                }
+
+                function validateForm(){
+                    var inputs = document.querySelectorAll('input[type="text"]');
+                    for (var i = 0; i < inputs.lenght; i++) {
+                        if (inputs[i].value.trim() === "") {
+                            alert("Please, submit required data");
+                            return false; // Prevent form submission
+                        }
+                    }
+                    return true; // Allow form submission
+                }
+                
+                function validateForm() {
+                    var inputs = document.querySelectorAll('input[type="text"]');
+                    var valid = true;
+
+                    inputs.forEach(function(input) {
+                        var attributeName = input.dataset.attribute;
+                        var attributeValue = input.value.trim();
+
+                        if (attributeName === "Price" && !/^\d+(\.\d{1,2})?$/.test(attributeValue)) {
+                            alert('Please, provide the data of indicated type for ' + attributeName);
+                            valid = false;
+                        }
+                    });
+
+                    return valid;
+                }
+
+                function displayNotification(message) {
+                    var notificationElement = document.getElementById('notification');
+                    notificationElement.innerText = message;
+                    notificationElement.style.display = 'block';
+                }
+
+            </script>
+
+        </body>
+
+        <hr>
+
+        <!-- Footer -->
+            <footer class="container text-center bg-light">
+                <p style="font-size:12px">Scandiweb Test assignment</p>
+            </footer>
+        <!-- Footer -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</html>
