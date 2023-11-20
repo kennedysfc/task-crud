@@ -5,7 +5,7 @@ This repository contains a web application accessible via URL that facilitates p
 
 ## Teste 
 [Chalange Task](https://gabrielmxavier.github.io/Contador_de_dias-Counter_Days/](https://crud-scandiweb.000webhostapp.com/)](https://scandiweb.notion.site/Junior-Developer-Test-Task-1b2184e40dea47df840b7c0cc638e61e/ ) 
-br
+//
 [Task Website](https://crud-scandiweb.000webhostapp.com/)
 
 
