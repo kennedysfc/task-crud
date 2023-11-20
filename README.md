@@ -3,6 +3,10 @@
 # Product Management Web Application
 This repository contains a web application accessible via URL that facilitates product management. The application consists of two primary pages:
 
+[Chalange Task]([[https://gabrielmxavier.github.io/Contador_de_dias-Counter_Days/](https://crud-scandiweb.000webhostapp.com/)](https://scandiweb.notion.site/Junior-Developer-Test-Task-1b2184e40dea47df840b7c0cc638e61e))
+[Task Website]([https://gabrielmxavier.github.io/Contador_de_dias-Counter_Days/](https://crud-scandiweb.000webhostapp.com/))
+
+
 Pages
 1. Product List Page
 The Product List Page displays an overview of all available products in a structured format. Users can view details such as product name, description, pricing, and availability status. Each product entry may include additional actions for editing or deleting the product.
