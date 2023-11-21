@@ -16,7 +16,11 @@ The Product List Page displays an overview of all available products in a struct
 2. Adding a Product Page
 The Adding a Product Page provides functionality to input and add new products to the system. Users can fill in details such as product name, description, pricing, availability, and any other necessary information. Upon submission, the new product gets added to the product list.
 
-Páginas
-1. Página de Lista de Produtos A Página de Lista de Produtos exibe uma visão geral de todos os produtos disponíveis em um formato estruturado. Os usuários podem ver detalhes como nome do produto, descrição, preços e status de disponibilidade. Cada entrada de produto pode incluir ações adicionais para editar ou excluir o produto.
 
-2. Página de Adição de Produto A Página de Adição de Produto fornece funcionalidade para inserir e adicionar novos produtos ao sistema. Os usuários podem preencher detalhes como nome do produto, descrição, preços, disponibilidade e quaisquer outras informações necessárias. Ao enviar, o novo produto é adicionado à lista de produtos.
+Páginas
+
+1.  Lista de Produtos
+A Página de exibe uma visão geral de todos os produtos disponíveis em um formato estruturado. Os usuários podem ver detalhes como nome do produto, descrição, preços e status de disponibilidade. Cada entrada de produto pode incluir ações adicionais para editar ou excluir o produto.
+
+3. Adição de Produto
+A Página de Adição de Produto fornece funcionalidade para inserir e adicionar novos produtos ao sistema. Os usuários podem preencher detalhes como nome do produto, descrição, preços, disponibilidade e quaisquer outras informações necessárias. Ao enviar, o novo produto é adicionado à lista de produtos.
